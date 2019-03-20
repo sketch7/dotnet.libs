@@ -1,0 +1,40 @@
+<Project>
+  <!-- Set the repository root into a variable -->
+  <PropertyGroup>
+    <SourceRoot>$(MSBuildThisFileDirectory)</SourceRoot>
+  </PropertyGroup>
+
+  <!-- Set common properties regarding assembly information and nuget packages -->
+  <PropertyGroup>
+    <Authors>Clayton Lautier, Stephen Lautier</Authors>
+    <Company>Sketch7</Company>
+    <Product>CoreLibs</Product>
+    <Copyright>© Sketch7. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/sketch7/sketch7.netcore.libs#license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/sketch7/sketch7.netcore.libs</PackageProjectUrl>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/16617196?s=200</PackageIconUrl>
+    <PackageTags>Sketch7 Core C# .NET NETCORE utilities extensions</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/sketch7/sketch7.netcore.libs</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <!-- Note: quite nice to have but since we dont really use, they will simply slow down CI
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource> -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- Common compile parameters -->
+  <PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>$(NoWarn);1701;1702;1705;1591</NoWarn>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+  </PropertyGroup>
+</Project>
