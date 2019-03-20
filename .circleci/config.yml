@@ -45,6 +45,6 @@ jobs:
               exit
             fi
 
-            SKETCH7_NUGET_API_KEY=$API_KEY
+            export SKETCH7_NUGET_API_KEY=$API_KEY
 
             npm run publish:dev
