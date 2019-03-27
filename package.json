@@ -1,6 +1,6 @@
 {
   "name": "@sketch7/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "versionSuffix": "",
   "scripts": {
     "pack": "bash ./tools/pack.sh",
