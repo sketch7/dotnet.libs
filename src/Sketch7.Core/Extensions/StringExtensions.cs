@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Data.HashFunction.xxHash;
+using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 // ReSharper disable once CheckNamespace
 namespace Sketch7.Core
@@ -61,7 +65,7 @@ namespace Sketch7.Core
 		/// 	.
 		/// </summary>
 		/// <param name="value"> String value to capitalize. </param>
-		/// <returns> Returns a separeted with spaces pascal string. </returns>
+		/// <returns> Returns a separated with spaces pascal string. </returns>
 		public static string ToStringWithSpaces(this string value)
 			=> Regex.Replace(
 				value,
@@ -102,7 +106,7 @@ namespace Sketch7.Core
 
 
 		///<summary>
-		///	Do action if current string is empty. e.g. myVar.IfEmptyThen( () => myProp.DoSomething);
+		///	Do action if current string is empty. e.g. myVar.IfEmptyThen(() => myProp.DoSomething);
 		///</summary>
 		///<param name="value"> Current string option </param>
 		///<param name="action"> </param>
@@ -113,6 +117,26 @@ namespace Sketch7.Core
 		{
 			if (string.IsNullOrWhiteSpace(value))
 				action();
+		}
+
+		private static readonly IxxHash HashFunction = xxHashFactory.Instance.Create();
+
+		public static async Task<string> ComputeHash(this string text)
+		{
+			using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(text)))
+			{
+				var value = await HashFunction.ComputeHashAsync(stream);
+				return value.AsBase64String();
+			}
+		}
+
+		public static string ComputeHashSync(this string text)
+		{
+			using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(text)))
+			{
+				var value = HashFunction.ComputeHash(stream);
+				return value.AsBase64String();
+			}
 		}
 
 	}
