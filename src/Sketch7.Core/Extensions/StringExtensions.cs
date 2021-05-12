@@ -79,11 +79,19 @@ namespace Sketch7.Core
 				RegexOptions.IgnorePatternWhitespace);
 
 		/// <summary>
-		/// 	Remove special characters from string, such as tabs, newlines etc... (\t, \n, \r)
+		/// 	Remove special formatters from string, such as tabs, newlines etc... (\t, \n, \r)
 		/// </summary>
 		/// <param name="value"> </param>
 		/// <returns> Return stripped string value. </returns>
-		public static string RemoveSpecialCharacters(this string value) => Regex.Replace(value, @"\t|\n|\r", string.Empty);
+		public static string RemoveSpecialFormatters(this string value) => Regex.Replace(value, @"\t|\n|\r", string.Empty);
+
+		/// <summary>
+		/// 	Removes all special characters from the string.
+		/// </summary>
+		/// <param name="value"> </param>
+		/// <returns> Return stripped string value. </returns>
+		public static string RemoveSpecialCharacters(this string value)
+			=> Regex.Replace(value, "[^a-zA-Z0-9]+", "", RegexOptions.Compiled);
 
 		/// <summary>
 		/// 	Reverse the string in the opposite direction.
